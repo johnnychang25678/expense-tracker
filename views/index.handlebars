@@ -1,1 +1,60 @@
-<h1>Hello World</h1>
+<div class="container mt-4">
+  {{!-- filter --}}
+  <div class="row">
+    <div class="col-3"></div>
+    <form class="filter-form col-6" action="">
+      <select class="form-select form-select-sm" aria-label="Default select example">
+        <option selected>Open this select menu</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    </form>
+  </div>
+
+  {{!-- totalAmount --}}
+  <div class="row mt-2">
+    <div class="col-3"></div>
+    <div class="col-6 d-flex justify-content-between">
+      <span>總金額:</span>
+      <div class="amount">25260</div>
+    </div>
+  </div>
+
+  {{!-- expenses --}}
+  <ul class="list-group">
+    <li class="list-group-item">
+      <div class="row align-items-center">
+        <div class="col-3"></div>
+        {{!-- icon --}}
+        <div class="col-1 expense-icon">
+          <i class="fas fa-utensils"></i>
+        </div>
+        {{!-- expense item --}}
+        <div class="col-4 expense-item d-flex flex-column">
+          <span class="category">午餐</span>
+          <small class="date">2020/12/23</small>
+        </div>
+        {{!-- amount --}}
+        <div class="col-1 expense-amount">
+          60
+        </div>
+        {{!-- buttons --}}
+        <div class="col-3 btn-group">
+
+          {{!-- edit --}}
+          <button class="mr-3">
+            <a href="/edit">修改</a>
+          </button>
+          {{!-- delete --}}
+          <form action="" class="ml-2">
+            <button type="submit">刪除</button>
+          </form>
+
+        </div>
+
+      </div>
+    </li>
+
+  </ul>
+</div>

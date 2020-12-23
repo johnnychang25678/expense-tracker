@@ -1,0 +1,12 @@
+/* body * {
+  border: 1px solid black;
+} */
+
+
+.amount {
+  font-size: 3.5rem;
+}
+
+.list-group-item {
+  border: none;
+}
