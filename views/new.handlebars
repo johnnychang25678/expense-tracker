@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="form-container mt-3">
+    <div class="description mt-3 mb-3 row">
+      <small class="d-inline-block col-2">*必填欄位</small>
+      <div class="col-8 d-flex justify-content-center">
+        <span class="fw-bold">請輸入你的支出</span>
+      </div>
+
+    </div>
+    <form action="/new" method="POST">
+      <div class="form-group row mb-4 p-2">
+        <label for="length" class="col-2 col-form-label">
+          名稱<sup>*</sup>：
+        </label>
+        <div class="col-8">
+          <input type="text" name="name" class="form-control" id="name">
+        </div>
+      </div>
+
+      <div class="form-group row mb-4 p-2">
+        <label for="length" class="col-2 col-form-label">
+          日期<sup>*</sup>：
+        </label>
+        <div class="col-8">
+          <input type="date" name="name" class="form-control" id="name">
+        </div>
+      </div>
+
+      <div class="form-group row mb-4 p-2">
+        <label for="length" class="col-2 col-form-label">
+          類別<sup>*</sup>：
+        </label>
+        <div class="col-8">
+          <select name="" id="" class="form-select">
+            <option value="">交通</option>
+            <option value="">飲食</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row mb-4 p-2">
+        <label for="length" class="col-2 col-form-label">
+          金額<sup>*</sup>：
+        </label>
+        <div class="col-8">
+          <input type="number" name="name" class="form-control" id="name">
+        </div>
+      </div>
+      <div class="d-flex justify-content-center mb-4">
+        <button type="submit">新增支出</button>
+
+      </div>
+
+    </form>
+
+  </div>
+</div>

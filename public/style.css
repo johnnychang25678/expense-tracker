@@ -10,3 +10,8 @@
 .list-group-item {
   border: none;
 }
+
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
