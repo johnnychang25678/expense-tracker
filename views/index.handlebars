@@ -44,10 +44,10 @@
         <div class="col-3 btn-group">
           {{!-- edit --}}
           <button class="mr-3">
-            <a href="/edit">修改</a>
+            <a href="/expenses/:id/edit">修改</a>
           </button>
           {{!-- delete --}}
-          <form action="" class="ml-2">
+          <form action="/expenses/:id?_method=DELETE" method="POST" class="ml-2">
             <button type="submit">刪除</button>
           </form>
         </div>
@@ -73,7 +73,7 @@
         <div class="col-3 btn-group">
           {{!-- edit --}}
           <button class="mr-3">
-            <a href="/edit">修改</a>
+            <a href="/expenses/id/edit">修改</a>
           </button>
           {{!-- delete --}}
           <form action="" class="ml-2">
@@ -86,7 +86,7 @@
     <div class="col-3"></div>
     <div class="col-6 d-flex justify-content-center">
       <button>
-        <a href="/new">新增支出</a>
+        <a href="/expenses/new">新增支出</a>
       </button>
     </div>
   </div>
