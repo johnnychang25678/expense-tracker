@@ -13,7 +13,7 @@
           名稱<sup>*</sup>：
         </label>
         <div class="col-8">
-          <input type="text" name="name" class="form-control">
+          <input type="text" name="name" class="form-control" required>
         </div>
       </div>
 
@@ -22,7 +22,7 @@
           日期<sup>*</sup>：
         </label>
         <div class="col-8">
-          <input type="date" name="date" class="form-control">
+          <input type="date" name="date" class="form-control" required>
         </div>
       </div>
 
@@ -31,7 +31,7 @@
           類別<sup>*</sup>：
         </label>
         <div class="col-8">
-          <select name="category" id="" class="form-select">
+          <select name="category" id="" class="form-select" required>
             <option value="home">家居物業</option>
             <option value="traffic">交通出行</option>
             <option value="entertainment">休閒娛樂</option>
@@ -46,11 +46,11 @@
           金額<sup>*</sup>：
         </label>
         <div class="col-8">
-          <input type="number" name="amount" class="form-control">
+          <input type="number" name="amount" class="form-control" required>
         </div>
       </div>
       <div class="d-flex justify-content-center mb-4">
-        <button type="submit">新增支出</button>
+        <button type="submit" class="btn btn-dark">新增支出</button>
 
       </div>
 

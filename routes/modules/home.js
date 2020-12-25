@@ -21,11 +21,13 @@ router.get('/', (req, res) => {
         return {
           ...record,
           date: format(record.date, 'y/LL/dd'), // format date
-          category: categoryToIcon(record.category) // convert data to icon
+          category: categoryToIcon(record.category), // convert data to icon
+          amount: new Intl.NumberFormat('en-US').format(record.amount) // format amount
         }
       })
-      const totalAmount = formatRecords.reduce((a, record) => a + record.amount, 0)
-      res.render('index', { records: formatRecords, totalAmount, filter })
+      const sumAmount = records.reduce((a, record) => a + record.amount, 0)
+      const formatTotalAmount = new Intl.NumberFormat('en-US').format(sumAmount)
+      res.render('index', { records: formatRecords, totalAmount: formatTotalAmount, filter })
     })
     .catch(err => console.error(err))
 

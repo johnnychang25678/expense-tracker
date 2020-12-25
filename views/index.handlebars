@@ -1,73 +1,72 @@
-<div class="container mt-4">
+<div class="display-container mt-4">
   {{!-- filter --}}
-  <div class="row">
-    <div class="col-3"></div>
-    <form class="filter-form col-6" action="/">
-      <select class="form-select form-select-sm" name="filter" onchange="this.form.submit()">
-        <option value="all" {{ifSelect filter.category 'all'}}>全部類別</option>
-        <option value="home" {{ifSelect filter.category 'home'}}>家居物業</option>
-        <option value="traffic" {{ifSelect filter.category 'traffic'}}>交通出行</option>
-        <option value="entertainment" {{ifSelect filter.category 'entertainment'}}>休閒娛樂</option>
-        <option value="food" {{ifSelect filter.category 'food'}}>餐飲食品</option>
-        <option value="others" {{ifSelect filter.category 'others'}}>其他</option>
-      </select>
-    </form>
-  </div>
+
+  <form class="filter-form" action="/">
+    <select class="form-select form-select-sm" name="filter" onchange="this.form.submit()">
+      <option value="all" {{ifSelect filter.category 'all'}}>全部類別</option>
+      <option value="home" {{ifSelect filter.category 'home'}}>家居物業</option>
+      <option value="traffic" {{ifSelect filter.category 'traffic'}}>交通出行</option>
+      <option value="entertainment" {{ifSelect filter.category 'entertainment'}}>休閒娛樂</option>
+      <option value="food" {{ifSelect filter.category 'food'}}>餐飲食品</option>
+      <option value="others" {{ifSelect filter.category 'others'}}>其他</option>
+    </select>
+  </form>
+
 
   {{!-- totalAmount --}}
-  <div class="row mt-2">
-    <div class="col-3"></div>
-    <div class="col-6 d-flex justify-content-between">
-      <span>總金額:</span>
-      <div class="amount">{{totalAmount}}</div>
-    </div>
+
+  <div class="total-amount d-flex justify-content-between mt-2">
+    <span>總金額:</span>
+    <div class="amount">${{totalAmount}}</div>
   </div>
 
-  {{!-- expenses --}}
-  {{#each records}}
-    <ul class="list-group">
-      <li class="list-group-item">
-        <div class="row align-items-center">
-          <div class="col-3"></div>
 
+  {{!-- expenses --}}
+  <ul class="list-group">
+    {{#each records}}
+      <div class=" d-flex justify-content-between list-item mb-2">
+        <div class=" py-1 px-3 item-box d-flex align-items-center">
           {{!-- icon --}}
-          <div class="col-1 expense-icon">
-            <i class="{{this.category}}"></i>
-          </div>
-          {{!-- expense item --}}
-          <div class="col-4 expense-item d-flex flex-column">
-            <span class="category">{{this.name}}</span>
-            <small class="date">{{this.date}}</small>
+          <div class="expense-left d-flex align-items-center">
+            <div class="expense-icon">
+              <i class="{{this.category}}"></i>
+            </div>
+
+            {{!-- expense item --}}
+            <div class="expense-item d-flex flex-column justify-content-center">
+              <span class="category">{{this.name}}</span>
+              <small class="date">{{this.date}}</small>
+            </div>
           </div>
           {{!-- amount --}}
-          <div class="col-1 expense-amount">
-            {{this.amount}}
+          <div class="expense-amount">
+            <span>${{this.amount}}</span>
           </div>
-          {{!-- buttons --}}
-          <div class="col-3 btn-group">
-            {{!-- edit --}}
-            <a href="/expenses/{{this._id}}/edit">
-              <button class="mr-3">修改</button>
-            </a>
-            {{!-- delete --}}
-            <form action="/expenses/{{this._id}}?_method=DELETE" method="POST" onsubmit="return confirm('確定要刪除嗎?')"
-              class="ml-2">
-              <button type="submit">刪除</button>
-            </form>
-          </div>
-      </li>
-  {{/each}}
+        </div>
+        {{!-- buttons --}}
+        <div class="button-box d-flex align-items-center py-1">
+          {{!-- edit --}}
+          <a href="/expenses/{{this._id}}/edit">
+            <button class="btn btn-secondary">修改</button>
+          </a>
+          {{!-- delete --}}
+          <form action="/expenses/{{this._id}}?_method=DELETE" method="POST" onsubmit="return confirm('確定要刪除嗎?')">
+            <button class="btn btn-warning" type="submit">刪除</button>
+          </form>
+
+        </div>
+
+      </div>
+    {{/each}}
   </ul>
   <div class="row mt-2">
     <div class="col-3"></div>
     <div class="col-6 d-flex justify-content-center">
-      <button>
-        <a href="/expenses/new">新增支出</a>
-      </button>
+      <a href="/expenses/new">
+        <button class="btn btn-dark">新增支出</button>
+      </a>
     </div>
   </div>
-
-
 
 </div>
 
