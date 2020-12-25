@@ -22,65 +22,38 @@
   </div>
 
   {{!-- expenses --}}
-  <ul class="list-group">
-    <li class="list-group-item">
-      <div class="row align-items-center">
-        <div class="col-3"></div>
+  {{#each records}}
+    <ul class="list-group">
+      <li class="list-group-item">
+        <div class="row align-items-center">
+          <div class="col-3"></div>
 
-        {{!-- icon --}}
-        <div class="col-1 expense-icon">
-          <i class="fas fa-utensils"></i>
-        </div>
-        {{!-- expense item --}}
-        <div class="col-4 expense-item d-flex flex-column">
-          <span class="category">午餐</span>
-          <small class="date">2020/12/23</small>
-        </div>
-        {{!-- amount --}}
-        <div class="col-1 expense-amount">
-          60
-        </div>
-        {{!-- buttons --}}
-        <div class="col-3 btn-group">
-          {{!-- edit --}}
-          <button class="mr-3">
-            <a href="/expenses/:id/edit">修改</a>
-          </button>
-          {{!-- delete --}}
-          <form action="/expenses/:id?_method=DELETE" method="POST" class="ml-2">
-            <button type="submit">刪除</button>
-          </form>
-        </div>
-    </li>
-    <li class="list-group-item">
-      <div class="row align-items-center">
-        <div class="col-3"></div>
-
-        {{!-- icon --}}
-        <div class="col-1 expense-icon">
-          <i class="fas fa-utensils"></i>
-        </div>
-        {{!-- expense item --}}
-        <div class="col-4 expense-item d-flex flex-column">
-          <span class="category">午餐</span>
-          <small class="date">2020/12/23</small>
-        </div>
-        {{!-- amount --}}
-        <div class="col-1 expense-amount">
-          60
-        </div>
-        {{!-- buttons --}}
-        <div class="col-3 btn-group">
-          {{!-- edit --}}
-          <button class="mr-3">
-            <a href="/expenses/id/edit">修改</a>
-          </button>
-          {{!-- delete --}}
-          <form action="" class="ml-2">
-            <button type="submit">刪除</button>
-          </form>
-        </div>
-    </li>
+          {{!-- icon --}}
+          <div class="col-1 expense-icon">
+            <i class="{{this.category}}"></i>
+          </div>
+          {{!-- expense item --}}
+          <div class="col-4 expense-item d-flex flex-column">
+            <span class="category">{{this.name}}</span>
+            <small class="date">{{this.date}}</small>
+          </div>
+          {{!-- amount --}}
+          <div class="col-1 expense-amount">
+            {{this.amount}}
+          </div>
+          {{!-- buttons --}}
+          <div class="col-3 btn-group">
+            {{!-- edit --}}
+            <button class="mr-3">
+              <a href="/expenses/:id/edit">修改</a>
+            </button>
+            {{!-- delete --}}
+            <form action="/expenses/:id?_method=DELETE" method="POST" class="ml-2">
+              <button type="submit">刪除</button>
+            </form>
+          </div>
+      </li>
+  {{/each}}
   </ul>
   <div class="row mt-2">
     <div class="col-3"></div>
