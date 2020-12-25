@@ -13,7 +13,7 @@ require('./config/mongoose')
 app.engine('handlebars', exphbs({
   defaultLayout: 'main',
   helpers: {
-    ifSelect: (a, b) => a === b ? 'selected' : null
+    ifSelect: (a, b) => a === b ? 'selected' : null // for memorizing user selected input
   }
 }))
 app.set('view engine', 'handlebars')

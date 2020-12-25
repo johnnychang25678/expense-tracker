@@ -5,8 +5,17 @@ const format = require('date-fns/format')
 const categoryToIcon = require('../../utils/categoryToIcon')
 
 
+
 router.get('/', (req, res) => {
-  Record.find().lean()
+  let filter
+  if (!req.query.filter || req.query.filter === 'all') {
+    filter = null
+  } else {
+    filter = { category: req.query.filter }
+  }
+
+
+  Record.find(filter).lean()
     .then(records => {
       const formatRecords = records.map(record => {
         return {
@@ -15,7 +24,8 @@ router.get('/', (req, res) => {
           category: categoryToIcon(record.category) // convert data to icon
         }
       })
-      res.render('index', { records: formatRecords })
+      const totalAmount = formatRecords.reduce((a, record) => a + record.amount, 0)
+      res.render('index', { records: formatRecords, totalAmount, filter })
     })
     .catch(err => console.error(err))
 
