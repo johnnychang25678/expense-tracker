@@ -43,7 +43,6 @@ router.get('/:id/edit', (req, res) => {
 // @access Public
 router.put('/:id', (req, res) => {
   const id = req.params.id
-  console.log(req.body)
   return Record.findById(id)
     .then(record => {
       record = Object.assign(record, req.body)
@@ -57,8 +56,11 @@ router.put('/:id', (req, res) => {
 // @desc delete an expense
 // @access Public
 router.delete('/:id', (req, res) => {
-  console.log('delete to /:id')
-  res.redirect('/')
+  const id = req.params.id
+  return Record.findById(id)
+    .then(record => record.remove())
+    .then(() => res.redirect('/'))
+    .catch(err => console.error(err))
 })
 
 
