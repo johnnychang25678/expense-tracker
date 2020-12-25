@@ -30,19 +30,16 @@
 }
 
 
-
-.list-item:nth-child(odd) {
+.list-item:nth-child(odd) > .item-box  {
   background-color: #F0F0F0
 }
 
 .item-box {
   width: 66%;
-  /* background-color: yellow; */
 }
 
 .button-box {
   width: 32%;
-  /* background-color: white; */
 }
 
 .item-box > .expense-left {

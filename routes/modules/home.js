@@ -4,8 +4,6 @@ const Record = require('../../models/record')
 const format = require('date-fns/format')
 const categoryToIcon = require('../../utils/categoryToIcon')
 
-
-
 router.get('/', (req, res) => {
   let filter
   if (!req.query.filter || req.query.filter === 'all') {
@@ -14,9 +12,11 @@ router.get('/', (req, res) => {
     filter = { category: req.query.filter }
   }
 
-
   Record.find(filter).lean()
     .then(records => {
+      const sumAmount = records.reduce((a, record) => a + record.amount, 0)
+      const formatTotalAmount = new Intl.NumberFormat('en-US').format(sumAmount)
+
       const formatRecords = records.map(record => {
         return {
           ...record,
@@ -25,8 +25,7 @@ router.get('/', (req, res) => {
           amount: new Intl.NumberFormat('en-US').format(record.amount) // format amount
         }
       })
-      const sumAmount = records.reduce((a, record) => a + record.amount, 0)
-      const formatTotalAmount = new Intl.NumberFormat('en-US').format(sumAmount)
+
       res.render('index', { records: formatRecords, totalAmount: formatTotalAmount, filter })
     })
     .catch(err => console.error(err))
