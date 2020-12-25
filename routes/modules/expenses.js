@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const Record = require('../../models/record')
 
 // @route GET /expenses/new
 // @desc Form for an add new expense
@@ -12,8 +13,11 @@ router.get('/new', (req, res) => {
 // @desc Add a new expense
 // @access Public
 router.post('/', (req, res) => {
-  console.log('post to /expenses')
-  res.redirect('/')
+  const data = req.body
+  return Record.create({ ...data })
+    .then(() => res.redirect('/'))
+    .catch(err => console.error(err))
+
 })
 
 // @route GET /expenses/:id/edit
