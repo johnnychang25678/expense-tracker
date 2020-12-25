@@ -10,7 +10,12 @@ const routes = require('./routes/index')
 require('./config/mongoose')
 
 // set up view engine
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
+app.engine('handlebars', exphbs({
+  defaultLayout: 'main',
+  helpers: {
+    ifSelect: (a, b) => a === b ? 'selected' : null
+  }
+}))
 app.set('view engine', 'handlebars')
 
 // middlewares

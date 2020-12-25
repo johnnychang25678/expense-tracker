@@ -45,10 +45,10 @@
           <div class="col-3 btn-group">
             {{!-- edit --}}
             <button class="mr-3">
-              <a href="/expenses/:id/edit">修改</a>
+              <a href="/expenses/{{this._id}}/edit">修改</a>
             </button>
             {{!-- delete --}}
-            <form action="/expenses/:id?_method=DELETE" method="POST" class="ml-2">
+            <form action="/expenses/{{this._id}}?_method=DELETE" method="POST" class="ml-2">
               <button type="submit">刪除</button>
             </form>
           </div>

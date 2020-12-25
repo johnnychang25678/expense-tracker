@@ -17,6 +17,7 @@ router.get('/', (req, res) => {
       })
       res.render('index', { records: formatRecords })
     })
+    .catch(err => console.error(err))
 
 })
 

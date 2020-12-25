@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const Record = require('../../models/record')
+const format = require('date-fns/format')
+
 
 // @route GET /expenses/new
 // @desc Form for an add new expense
@@ -24,8 +26,17 @@ router.post('/', (req, res) => {
 // @desc From for edit expense
 // @access Public
 router.get('/:id/edit', (req, res) => {
-  console.log('get to /:id/edit')
-  res.render('edit')
+  console.log(req.params)
+  const id = req.params.id
+  Record.findById(id).lean()
+    .then(record => {
+      const formatRecord = {
+        ...record,
+        date: format(record.date, 'y-LL-dd')
+      }
+      return res.render('edit', { record: formatRecord })
+    })
+    .catch(err => console.error(err))
 })
 
 // @route PUT /expenses/:id
