@@ -26,7 +26,6 @@ router.post('/', (req, res) => {
 // @desc From for edit expense
 // @access Public
 router.get('/:id/edit', (req, res) => {
-  console.log(req.params)
   const id = req.params.id
   Record.findById(id).lean()
     .then(record => {
@@ -43,8 +42,15 @@ router.get('/:id/edit', (req, res) => {
 // @desc edit an expense
 // @access Public
 router.put('/:id', (req, res) => {
-  console.log('put to /:id')
-  res.redirect('/')
+  const id = req.params.id
+  console.log(req.body)
+  return Record.findById(id)
+    .then(record => {
+      record = Object.assign(record, req.body)
+      return record.save()
+    })
+    .then(() => res.redirect('/'))
+    .catch(err => console.error(err))
 })
 
 // @route DELETE /expenses/:id
