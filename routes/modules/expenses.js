@@ -23,7 +23,7 @@ router.post('/', (req, res) => {
 })
 
 // @route GET /expenses/:id/edit
-// @desc From for edit expense
+// @desc Form for edit expense
 // @access Public
 router.get('/:id/edit', (req, res) => {
   const id = req.params.id
