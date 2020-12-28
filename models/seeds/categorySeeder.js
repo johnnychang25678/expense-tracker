@@ -1,9 +1,8 @@
 const db = require('../../config/mongoose')
 const Category = require('../category')
 
-db.once('open', () => {
-  console.log('mongodb connected')
-  Category.create(
+db.once('open', async () => {
+  await Category.create(
     {
       category_name: 'home',
       icon: 'fas fa-home',
@@ -24,8 +23,9 @@ db.once('open', () => {
       category_name: 'others',
       icon: 'fas fa-pen',
     },
-
   )
-  console.log('seed data created in mongodb')
+  console.log('Category seed data created in mongodb')
+  db.close()
+
 })
 

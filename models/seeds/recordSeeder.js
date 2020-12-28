@@ -1,9 +1,8 @@
 const db = require('../../config/mongoose')
 const Record = require('../record')
 
-db.once('open', () => {
-  console.log('mongodb connected')
-  Record.create(
+db.once('open', async () => {
+  await Record.create(
     {
       name: '午餐',
       category: 'food',
@@ -29,5 +28,6 @@ db.once('open', () => {
       amount: 15000
     },
   )
-  console.log('seed data created in mongodb')
+  console.log('Record seed data created in mongodb')
+  db.close()
 })
