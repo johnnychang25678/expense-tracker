@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
       filter = { category: req.query.filter }
     }
 
-    const records = await Record.find(filter).lean()
+    const records = await Record.find(filter).lean().sort({ date: 'desc' })
     const sumAmount = records.reduce((a, record) => a + record.amount, 0)
     const formatTotalAmount = new Intl.NumberFormat('en-US').format(sumAmount)
     const formatRecords = records.map(record => {
