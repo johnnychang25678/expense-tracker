@@ -3,12 +3,12 @@
 
   <form class="filter-form" action="/">
     <select class="form-select form-select-sm" name="filter" onchange="this.form.submit()">
-      <option value="all" {{ifSelect filter.category 'all'}}>全部類別</option>
-      <option value="home" {{ifSelect filter.category 'home'}}>家居物業</option>
-      <option value="traffic" {{ifSelect filter.category 'traffic'}}>交通出行</option>
-      <option value="entertainment" {{ifSelect filter.category 'entertainment'}}>休閒娛樂</option>
-      <option value="food" {{ifSelect filter.category 'food'}}>餐飲食品</option>
-      <option value="others" {{ifSelect filter.category 'others'}}>其他</option>
+      <option value="all" {{ifSelect filter.category 'all' }}>全部類別</option>
+      <option value="home" {{ifSelect filter.category 'home' }}>家居物業</option>
+      <option value="traffic" {{ifSelect filter.category 'traffic' }}>交通出行</option>
+      <option value="entertainment" {{ifSelect filter.category 'entertainment' }}>休閒娛樂</option>
+      <option value="food" {{ifSelect filter.category 'food' }}>餐飲食品</option>
+      <option value="others" {{ifSelect filter.category 'others' }}>其他</option>
     </select>
   </form>
 
@@ -26,8 +26,10 @@
     {{#each records}}
       <div class=" d-flex justify-content-between list-item mb-2">
         <div class=" py-1 px-3 item-box d-flex align-items-center">
-          {{!-- icon --}}
+
+          {{!-- left --}}
           <div class="expense-left d-flex align-items-center">
+            {{!-- icon --}}
             <div class="expense-icon">
               <i class="{{this.category}}"></i>
             </div>
@@ -37,8 +39,14 @@
               <span class="category">{{this.name}}</span>
               <small class="date">{{this.date}}</small>
             </div>
+
+            {{!-- merchant --}}
+            <div class="expense-merchant">
+              <span class="fst-italic fw-light">{{this.merchant}}</span>
+            </div>
           </div>
-          {{!-- amount --}}
+
+          {{!-- right & amount --}}
           <div class="expense-amount">
             <span>${{this.amount}}</span>
           </div>

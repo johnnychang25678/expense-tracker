@@ -50,6 +50,17 @@
   flex-basis: 20%;
 }
 
+.expense-left > .expense-item {
+  flex-basis: 40%;
+}
+
+.expense-merchant {
+  width: 120px;
+  overflow: scroll;
+  white-space: nowrap; 
+}
+
+
 .expense-amount {
   width: 70px;
   text-align: right;
