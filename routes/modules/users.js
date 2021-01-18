@@ -20,6 +20,15 @@ router.post('/login', passport.authenticate('local', {
   failureFlash: true
 }))
 
+// @route GET /users/logout
+// @desc logout
+// @access Private
+router.get('/logout', (req, res) => {
+  req.logout()
+  req.flash('successMessage', '你已經成功登出。')
+  res.redirect('/users/login')
+})
+
 // @route GET /users/register
 // @desc register form
 // @access Public

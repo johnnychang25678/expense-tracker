@@ -20,11 +20,21 @@
   <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">家庭記帳本</a>
+      {{#if isAuthenticated}}
+        <a href="/users/logout" class="btn btn-dark float-end">
+          登出
+        </a>
+      {{else}}
+        <a href="/users/login" class="btn btn-dark float-end">
+          登入
+        </a>
+      {{/if}}
     </div>
   </nav>
 
-
-
+  {{#if user}}
+    <small style="margin-left: 12px;"><i>目前登入：{{user.email}}</i></small>
+  {{/if}}
 
   {{{body}}}
   {{!-- bootstrap --}}
