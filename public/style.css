@@ -8,8 +8,12 @@
   padding: 0 1rem;
 }
 
-.display-container > .filter-form {
+.display-container > .filters {
   width: 67%;
+}
+
+.filters .filter-form {
+  flex-basis: 48%;
 }
 
 .display-container > .total-amount {
