@@ -6,17 +6,18 @@ const format = require('date-fns/format')
 
 // @route GET /expenses/new
 // @desc Form for an add new expense
-// @access Public
+// @access Private
 router.get('/new', (req, res) => {
   res.render('new')
 })
 
 // @route POST /expenses
 // @desc Add a new expense
-// @access Public
+// @access Private
 router.post('/', (req, res) => {
+  const userId = req.user._id
   const data = req.body
-  return Record.create({ ...data })
+  return Record.create({ ...data, userId })
     .then(() => res.redirect('/'))
     .catch(err => console.error(err))
 
@@ -24,10 +25,11 @@ router.post('/', (req, res) => {
 
 // @route GET /expenses/:id/edit
 // @desc Form for edit expense
-// @access Public
+// @access Private
 router.get('/:id/edit', (req, res) => {
-  const id = req.params.id
-  Record.findById(id).lean()
+  const userId = req.user._id
+  const _id = req.params.id
+  Record.findOne({ _id, userId }).lean()
     .then(record => {
       const formatRecord = {
         ...record,
@@ -40,10 +42,11 @@ router.get('/:id/edit', (req, res) => {
 
 // @route PUT /expenses/:id
 // @desc edit an expense
-// @access Public
+// @access Private
 router.put('/:id', (req, res) => {
-  const id = req.params.id
-  return Record.findById(id)
+  const userId = req.user._id
+  const _id = req.params.id
+  return Record.findOne({ _id, userId })
     .then(record => {
       record = Object.assign(record, req.body)
       return record.save()
@@ -54,10 +57,11 @@ router.put('/:id', (req, res) => {
 
 // @route DELETE /expenses/:id
 // @desc delete an expense
-// @access Public
+// @access Private
 router.delete('/:id', (req, res) => {
-  const id = req.params.id
-  return Record.findById(id)
+  const userId = req.user._id
+  const _id = req.params.id
+  return Record.findOne({ _id, userId })
     .then(record => record.remove())
     .then(() => res.redirect('/'))
     .catch(err => console.error(err))

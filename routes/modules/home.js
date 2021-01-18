@@ -7,10 +7,11 @@ const format = require('date-fns/format')
 const filter = require('../../utils/filter') // mongodb query for filter function
 
 router.get('/', (req, res) => {
+  const userId = req.user._id
   const { month, category } = req.query
   const filters = filter(month, category)
 
-  const recordData = Record.find(filters).lean().sort({ date: 'desc' })
+  const recordData = Record.find({ userId, ...filters }).lean().sort({ date: 'desc' })
   const categoryData = Category.find().lean()
 
   Promise.all([categoryData, recordData])
