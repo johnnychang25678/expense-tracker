@@ -1,0 +1,64 @@
+{
+  "categories": [
+    {
+      "category_name": "home",
+      "icon": "fas fa-home"
+    },
+    {
+      "category_name": "traffic",
+      "icon": "fas fa-shuttle-van"
+    },
+    {
+      "category_name": "entertainment",
+      "icon": "fas fa-grin-beam"
+    },
+    {
+      "category_name": "food",
+      "icon": "fas fa-utensils"
+    },
+    {
+      "category_name": "others",
+      "icon": "fas fa-pen"
+    }
+  ],
+  "records": [
+    {
+      "name": "午餐",
+      "category": "food",
+      "date": "2020-11-11T00:00:00.000Z",
+      "merchant": "麥當勞",
+      "amount": 120
+    },
+    {
+      "name": "捷運",
+      "category": "traffic",
+      "date": "2020-12-23T00:00:00.000Z",
+      "amount": 60
+    },
+    {
+      "name": "房租",
+      "category": "home",
+      "date": "2020-09-07T00:00:00.000Z",
+      "amount": 15000
+    },
+    {
+      "name": "唱歌",
+      "category": "entertainment",
+      "date": "2020-10-23T00:00:00.000Z",
+      "merchant": "好樂迪",
+      "amount": 750
+    },
+    {
+      "name": "房租",
+      "category": "home",
+      "date": "2020-09-07T00:00:00.000Z",
+      "amount": 25000
+    },
+    {
+      "name": "學費",
+      "category": "others",
+      "date": "2020-09-07T00:00:00.000Z",
+      "amount": 30000
+    }
+  ]
+}
