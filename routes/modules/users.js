@@ -8,7 +8,10 @@ const User = require('../../models/user')
 // @desc login form
 // @access Public
 router.get('/login', (req, res) => {
-  res.render('login')
+  if (req.isAuthenticated()) {
+    return res.redirect('/')
+  }
+  return res.render('login')
 })
 
 // @route POST /users/login
@@ -26,7 +29,7 @@ router.post('/login', passport.authenticate('local', {
 router.get('/logout', (req, res) => {
   req.logout()
   req.flash('successMessage', '你已經成功登出。')
-  res.redirect('/users/login')
+  return res.redirect('/users/login')
 })
 
 // @route GET /users/register
