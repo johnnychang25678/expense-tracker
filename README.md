@@ -7,6 +7,7 @@ An user authentication & CRUD web application build with `node.js`.
 ## Host
 - The app is hosted with `Heroku` at: https://boiling-cove-29311.herokuapp.com/
 - Try with these accounts:
+
 User 1:
 ```
 email: user1@example.com / password: 12345678
